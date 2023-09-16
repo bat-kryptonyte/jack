@@ -1,0 +1,12 @@
+.logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 1rem;
+    padding-left: 4rem;
+  }
+  
+  @media (max-width: 768px) {
+      .logo {
+        padding-left: 1rem;
+      }
+    }
