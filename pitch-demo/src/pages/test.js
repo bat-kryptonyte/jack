@@ -61,9 +61,12 @@ export default function Test() {
       }
 
       const pose = await net.estimateSinglePose(videoRef.current);
-      console.log(pose.keypoints);
-      drawKeypoints(pose.keypoints);
-      setKeypointsData(prevData => [...prevData, pose.keypoints]);
+      const filteredKeypoints = pose.keypoints.filter(keypoint => [
+        'leftShoulder', 'rightShoulder', 'leftElbow', 'rightElbow', 'leftWrist', 'rightWrist'
+      ].includes(keypoint.part));
+      console.log(filteredKeypoints);  
+      drawKeypoints(filteredKeypoints);
+      setKeypointsData(prevData => [...prevData, filteredKeypoints]);
     }, 1000/30);
 
     countdownInterval = setInterval(() => {
