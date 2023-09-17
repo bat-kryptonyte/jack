@@ -1,20 +1,28 @@
-import React from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { Cormorant_Garamond } from "@next/font/google";
-import { AnimatePresence } from "framer-motion";
+import { ChakraProvider } from "@chakra-ui/react";
 
-export const cormorantGaramond = Cormorant_Garamond({
-  subsets: ["cyrillic"],
+import { Lato } from "@next/font/google";
+
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  fonts: {
+    heading: "Ubuntu",
+  },
+});
+
+export const roboto = Lato({
+  subsets: ["latin"],
   weight: "300",
 });
 
-export default function App({ Component, pageProps, router }: AppProps) {
+export default function App({ Component, pageProps }: AppProps) {
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <main className={cormorantGaramond.className}>
-        <Component {...pageProps} key={router.asPath} />
+    <ChakraProvider theme={theme}>
+      <main className={roboto.className}>
+        <Component {...pageProps} />
       </main>
-    </AnimatePresence>
+    </ChakraProvider>
   );
 }

@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
-import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer";
 import styles from "../styles/App.module.css";
 import { motion } from "framer-motion";
+import Navbar from "./Navbar/Navbar";
 
 type LayoutProps = {
   children: ReactNode;
@@ -21,8 +21,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       }}
     >
       <div>
-        <header className={styles.navbar}>
-          <Navbar />
+        <header>
+            <Navbar/>
         </header>
         <main>{children}</main>
         <footer className={styles.footer}>
