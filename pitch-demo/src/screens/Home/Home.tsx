@@ -45,7 +45,7 @@ const Home: React.FC = () => {
             <Heading fontSize="2s" color="white" mr={2}>
               Try out our Demo!
             </Heading>
-            <Link href="/home" title="Go to interface">
+            <Link href="/demo" title="Go to interface">
               <Icon as={FaArrowCircleRight} w={6} h={6} color="white" />
             </Link>
           </Flex>
