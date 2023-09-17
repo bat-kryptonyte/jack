@@ -2,20 +2,15 @@ import { useState } from 'react';
 import dotenv from 'dotenv';
 import OpenAI from "openai";
 
+dotenv.config()
+
 function Feedback(props) {
-    const [feedback, setFeedback] = useState("");
-    const [temperature, setTemperature] = useState(0.7);
-    const [maxTokens, setMaxTokens] = useState(1280);
-
-    dotenv.config()
-
+    const [feedback] = useState("");
     const arm_angle =  90;
     const drop_speed = 30;
     const elbow_angle = 20;
     const curl_speed = 10;
 
-
-    console.log(process.env.OPENAI_API_KEY);
 
 function generateMessage(arm_angle, drop_speed, elbow_angle, curl_speed) {
     const arm_angle_confidence = `${arm_angle}% confident that the forearm is not extended enough on descent`;
@@ -26,7 +21,6 @@ function generateMessage(arm_angle, drop_speed, elbow_angle, curl_speed) {
     return arm_angle_confidence + ". " + drop_speed_confidence + ". " + elbow_angle_confidence + ". " + curl_speed_confidence + "."
     }
 
-    console.log("hey")
     const userMessage = generateMessage(arm_angle, drop_speed, elbow_angle, curl_speed);
 
     const openai = new OpenAI({
