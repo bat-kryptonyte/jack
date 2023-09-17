@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-console.log(process.env.OPENAI_API_KEY)
+console.log("hey")
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
@@ -23,12 +23,13 @@ export default async function handler(req, res) {
             presence_penalty: 0
     }, {
     headers: {
-        'Authorization': `Bearer ${env.local.OPENAI_API_KEY}`,
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json'
         }
     });
-
-    res.status(200).json({ data: response.data.choices[0].text.trim() });
+    const aiResponse = response.data.choices && response.data.choices[0] && response.data.choices[0].text;
+    console.log(aiResponse);
+    res.status(200).json({ data: aiResponse });
     } catch (error) {
     res.status(500).json({ error: "OpenAI API call failed" });
     }
